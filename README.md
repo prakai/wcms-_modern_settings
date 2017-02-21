@@ -15,4 +15,5 @@ Replace old layout of WonderCMS setting dialog. Sepparates setting fields into 3
 - Supports setting fields from other plugins.
 
 # Update
+1.0.0
 * 2017-02-21 Initial version
