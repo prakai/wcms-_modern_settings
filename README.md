@@ -1,7 +1,7 @@
 # wcms-_modern_settings
-Replace a new look of WonderCMS settings
+This is a plugin for WonderCMS (https://www.wondercms.com). It replaces old WonderCMS settings into a new look.
 
-Renew layout of WonderCMS setting dialog. Sepparates setting fields into 3 sections: Page settings, Plugins settings, and Site settings.
+Replace old layout of WonderCMS setting dialog. Sepparates setting fields into 3 sections: Page settings, Plugins settings, and Site settings.
 
 # Download and Setup
 1. Download the ZIP file.
