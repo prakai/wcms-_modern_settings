@@ -5,7 +5,7 @@ Replace old layout of WonderCMS setting dialog. Sepparates setting fields into 3
 
 # Download and Setup
 1. Download the ZIP file.
-2. Create folder named "\_modern_settings" in WonderCMS plugins folder. IMPORTANT!! Plugin folder name must begin with "\_", force to load this plugin at the first. 
+2. Create folder named "\_modern_settings" in WonderCMS plugins folder. IMPORTANT!! Plugin folder name must start with "\_", to force to load this plugin at the first. 
 3. Unzip all folders and files from zip file in to created folder.
 4. The new settings layout will be show or replace the old one after login.
 
