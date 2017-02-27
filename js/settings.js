@@ -8,21 +8,21 @@ $(function() {
 var currentPanel = '';
 
 /* Open Overlay Panel */
-function openPanel(p) {
-	if (currentPanel==p){
+function openPanel(cp) {
+	if (currentPanel==cp){
 		return;
 	}
 	if (currentPanel!='') {
 		closePanel(currentPanel);
 	}
-	currentPanel = p;
-	document.getElementById(p+'Panel').style.height = (window.innerHeight - 50)+'px';//"100%";
-	$('#'+p+'Settings').addClass('active');
+	currentPanel = cp;
+	document.getElementById(cp+'Panel').style.height = (window.innerHeight - 50)+'px';
+	$('#navbar-settings ul li a.active').removeClass('active');
+	$('#navbar-settings ul li a#'+cp+'Settings').addClass('active');
 }
 
 /* Close Overlay Panel */
-function closePanel(p) {
+function closePanel(cp) {
 	currentPanel = '';
-	document.getElementById(p+'Panel').style.height = "0%";
-	$('#'+p+'Settings').removeClass('active');
+	document.getElementById(cp+'Panel').style.height = "0%";
 }
