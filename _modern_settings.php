@@ -5,10 +5,10 @@
  * XXAdd login link to footer.
  *
  * @author  Prakai Nadee <prakai@rmuti.ac.th>
- * @version 1.0.0
+ * @version 1.1.0
  */
 
- if(defined('VERSION'))
+ if(defined('VERSION') && !defined('version'))
   	define('version', VERSION);
  if(version<'2.0.0')
      defined('INC_ROOT') OR die('Direct access is not allowed.');
@@ -22,7 +22,6 @@
      wCMS::addListener('onJavaScript', 'loadModernJS');
 	 wCMS::addListener('onSettings', 'displayModernSettings');
  }
-
 
 function loadModernJS($args) {
 	$script = <<<'EOT'
