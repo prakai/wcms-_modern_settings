@@ -1,27 +1,20 @@
 <?php
 /**
- * Function of modern theme
+ * _Modern settings plugin for WonderCMS.
  *
- * XXAdd login link to footer.
+ * Change default settings page to a new modern style.
  *
  * @author  Prakai Nadee <prakai@rmuti.ac.th>
+ * @version 1.2.0
  * @version 1.1.0
  */
 
- if(defined('VERSION') && !defined('version'))
-  	define('version', VERSION);
  if(version<'2.0.0')
      defined('INC_ROOT') OR die('Direct access is not allowed.');
 
- if(version<'2.0.0') {
-	 wCMS::addListener('css', 'loadModernCSS');
-     wCMS::addListener('js', 'loadModernJS');
-	 wCMS::addListener('settings', 'displayModernSettings');
- } else {
-	 wCMS::addListener('onStyle', 'loadModernCSS');
-     wCMS::addListener('onJavaScript', 'loadModernJS');
-	 wCMS::addListener('onSettings', 'displayModernSettings');
- }
+ wCMS::addListener('css', 'loadModernCSS');
+ wCMS::addListener('js', 'loadModernJS');
+ wCMS::addListener('settings', 'displayModernSettings');
 
 function loadModernJS($args) {
 	$script = <<<'EOT'
@@ -127,8 +120,8 @@ EOT;
 		$copyright = (wCMS::getConfig('copyright') != '' ? wCMS::getConfig('copyright') : '');
 		$loginURL = wCMS::getConfig('login');
 	} else {
-		$siteTitle = (wCMS::get('config','site_title') != '' ? wCMS::get('config','site_title') : '');
-		$copyright = (wCMS::get('blocks','footer')->html != '' ? wCMS::get('blocks','footer')->html : '') ;
+		$siteTitle = (wCMS::get('config','siteTitle') != '' ? wCMS::get('config','siteTitle') : '');
+		$copyright = (wCMS::get('blocks','footer')->content != '' ? wCMS::get('blocks','footer')->content : '') ;
 		$loginURL = wCMS::get('config','login');
 	}
 	$sitePanel = '
@@ -141,8 +134,8 @@ EOT;
 			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 				<div class="text-left">
 					<div>
-						<label for="'.((version<'2.0.0')?'siteTitle':'site_title').'">Website title</label>
-						<span id="'.((version<'2.0.0')?'siteTitle':'site_title').'" data-target="config" class="setbox editText">'.$siteTitle.'</span>
+						<label for="siteTitle">Website title</label>
+						<span id="siteTitle" data-target="config" class="setbox editText">'.$siteTitle.'</span>
 					</div>
 					<div class="marginTop20">
 						<label for="'.((version<'2.0.0')?'copyright':'footer').'">Web footer</label>
@@ -155,10 +148,10 @@ EOT;
         						<div class="setbox">
 						';
 	if (version<'2.0.0') {
-		$sitePanel .= '<select class="form-control selectpicker" id="themeSelect" name="themeSelect" onChange="fieldSave(\'theme\',this.value);">';
+		$sitePanel .= '<select class="form-control selectpicker show-menu-arrow" id="themeSelect" name="themeSelect" onChange="fieldSave(\'theme\',this.value);">';
 		foreach (glob(constant('INC_ROOT').'/themes/*', constant('GLOB_ONLYDIR')) as $dir) $sitePanel .= '<option value="'.basename($dir).'"'.(basename($dir) == wCMS::getConfig('theme') ? ' selected' : '').'>'. ucfirst(basename($dir)).' theme'.'</option>';
 	} else {
-		$sitePanel .= '<select class="form-control selectpicker" name="themeSelect" onChange="fieldSave(\'theme\',this.value,\'config\');">';
+		$sitePanel .= '<select class="form-control selectpicker show-menu-arrow" name="themeSelect" onChange="fieldSave(\'theme\',this.value,\'config\');">';
 		foreach (glob(__DIR__.'/../../themes/*', GLOB_ONLYDIR) as $dir) $sitePanel.='<option style="font-size: 1em;" value="'.basename($dir).'"'.(basename($dir) == wCMS::get('config','theme') ? ' selected' : '').'>'.ucfirst(basename($dir)).' theme'.'</option>';
 	}
 	$sitePanel .= '
@@ -168,8 +161,8 @@ EOT;
                         </div>
                         <div class="col-md-6">
         					<div class="marginTop20">
-        						<label for="'.((version<'2.0.0')?'menuItems':'list').'" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Enter a new page name in a new line">Menu items</label>
-        						<span id="'.((version<'2.0.0')?'menuItems':'list').'" data-target="config" class="setbox editText">
+        						<label for="menuItems" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Enter a new page name in a new line">Menu items</label>
+        						<span id="menuItems" data-target="config" class="setbox editText">
 ';
 	if (version<'2.0.0') {
 		if (empty(wCMS::getConfig('menuItems')))
@@ -178,7 +171,7 @@ EOT;
 			$sitePanel .= $key.'<br>';
 		$sitePanel = preg_replace('/(<br>)+$/', '', $sitePanel);
 	} else {
-		foreach (wCMS::get('config','list') as $key)
+		foreach (wCMS::get('config','menuItems') as $key)
 		 	$sitePanel .= $key.'<br>';
 		$sitePanel = preg_replace('/(<br>)+$/', '', $sitePanel);
 	}
@@ -190,15 +183,15 @@ EOT;
                     <div class="row">
                         <div class="col-md-6">
         					<div class="marginTop20">
-        						<label for="'.((version<'2.0.0')?'defaultPage':'default').'" data-toggle="tooltip" data-placement="right" title="To make another page as your default homepage, rename this to another existing page">Default homepage</label>
+        						<label for="defaultPage" data-toggle="tooltip" data-placement="right" title="To make another page as your default homepage, rename this to another existing page">Default homepage</label>
                                 <div class="setbox">
 						';
 	if (version<'2.0.0') {
-		$sitePanel .= '<select class="form-control selectpicker" id="themeSelect" name="'.((version<'2.0.0')?'defaultPage':'default').'" onChange="fieldSave(\'defaultPage\',this.value);">';
+		$sitePanel .= '<select class="form-control selectpicker show-menu-arrow" id="themeSelect" name="defaultPage" onChange="fieldSave(\'defaultPage\',this.value);">';
 		foreach (wCMS::get('config','menuItems') as $key) $sitePanel .= '<option style="font-size: 1em;" value="$key" '.($key == wCMS::getConfig('defaultPage') ? ' selected' : '').'>$key</option>';
 	} else {
-		$sitePanel .= '<select class="form-control selectpicker" name="'.((version<'2.0.0')?'defaultPage':'default').'" onChange="fieldSave(\'default\',this.value,\'config\');">';
-        foreach (wCMS::get('config','list') as $key) $sitePanel .= '<option style="font-size: 1em;" value="'.$key.'" '.($key == wCMS::get('config','default') ? ' selected' : '').'>'.$key.'</option>';
+		$sitePanel .= '<select class="form-control selectpicker show-menu-arrow" name="defaultPage" onChange="fieldSave(\'defaultPage\',this.value,\'config\');">';
+        foreach (wCMS::get('config','menuItems') as $key) $sitePanel .= '<option style="font-size: 1em;" value="'.$key.'" '.($key == wCMS::get('config','defaultPage') ? ' selected' : '').'>'.$key.'</option>';
 	}
 	$sitePanel .= '
             						</select>
@@ -233,8 +226,8 @@ EOT;
 			unset(wCMS::$listeners['settings'][$k]);
 		}
 	} else {
-		if(($k = array_search('displayModernSettings', wCMS::$_listeners['onSettings'])) !== false) {
-			unset(wCMS::$_listeners['onSettings'][$k]);
+		if(($k = array_search('displayModernSettings', wCMS::$_listeners['settings'])) !== false) {
+			unset(wCMS::$_listeners['settings'][$k]);
 		}
 	}
 	$pluginsPanel = '
@@ -251,7 +244,7 @@ EOT;
 	if (version<'2.0.0') {
 		$pluginsPanel = wCMS::hook('settings', $pluginsPanel);
 	} else {
-		$pluginsPanel = wCMS::_hook('onSettings', $pluginsPanel);
+		$pluginsPanel = wCMS::_hook('settings', $pluginsPanel);
 	}
 	if (@is_array($pluginsPanel))
 		$pluginsPanel = implode('', $pluginsPanel);

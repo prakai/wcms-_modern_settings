@@ -53,7 +53,7 @@ body .settings {
 	top: 50px;
 	overflow-y: scroll;
 	background-color: #77a1cd; /*rgb(0,0,0);*/ /* Black fallback color */
-	background-color: rgba(139,181,226, 0.9); /* Black w/opacity */
+	background-color: rgba(139,181,226, 0.95); /* Black w/opacity */
 	overflow-x: hidden; /* Disable horizontal scroll */
 	transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
@@ -99,12 +99,18 @@ body .settings {
 	border-bottom: 0px !important;
 }
 
+#save {
+	top: 0px !important;
+	vertical-align: middle !important;
+}
+
 .setbox {
 	color: #efefef;
 	margin: 5px 0;
 	padding: 10px;
 	border-radius: 3px;
 	background: #77a1dd;
+	border: 1px dotted #7791cd !important;
 }
 
 select {
