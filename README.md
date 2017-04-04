@@ -13,11 +13,11 @@ Replace old layout of WonderCMS setting dialog. Sepparates setting fields into 3
 - Replace default WonderCMS settings dialog.
 - Separates setting fields into 3 sections: Page settings, Plugins settings, and Site settings.
 - Supports setting fields from other plugins.
-- Suports both WonderCMS-1.x and WonderCMS-2.0.2.
+- Suports both WonderCMS-1.x and WonderCMS-2.x.x
 
 # Update
 * 1.2.0 - 2017-04-04
- - Adds support for WonderCMS-2.0.2.
+ - Edit to support for WonderCMS-2.x.x
 * 1.1.1 - 2017-03-04
  - Change list style using bootstrap-select (https://silviomoreto.github.io/bootstrap-select).
  - Change default page setting using a select.
