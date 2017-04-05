@@ -8,13 +8,14 @@
  * @version 1.2.0
  * @version 1.1.0
  */
+if(defined('VERSION') && !defined('version'))
+  	define('version', VERSION);
+if(version<'2.0.0')
+	defined('INC_ROOT') OR die('Direct access is not allowed.');
 
- if(version<'2.0.0')
-     defined('INC_ROOT') OR die('Direct access is not allowed.');
-
- wCMS::addListener('css', 'loadModernCSS');
- wCMS::addListener('js', 'loadModernJS');
- wCMS::addListener('settings', 'displayModernSettings');
+wCMS::addListener('css', 'loadModernCSS');
+wCMS::addListener('js', 'loadModernJS');
+wCMS::addListener('settings', 'displayModernSettings');
 
 function loadModernJS($args) {
 	$script = <<<'EOT'
