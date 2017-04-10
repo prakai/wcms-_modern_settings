@@ -3,6 +3,9 @@ This is a plugin for WonderCMS (https://www.wondercms.com). It replaces old Wond
 
 Replace old layout of WonderCMS setting dialog. Sepparates setting fields into 3 sections: Page settings, Plugins settings, and Site settings.
 
+# Demo
+https://wondercms-demo.000webhostapp.com/
+
 # Download and Setup
 1. Download the ZIP file.
 2. Create folder named "\_modern_settings" in WonderCMS plugins folder. IMPORTANT!! Plugin folder name must start with "\_", to force to load this plugin at the first. 
