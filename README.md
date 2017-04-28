@@ -19,6 +19,8 @@ https://wondercms-demo.000webhostapp.com/
 - Suports both WonderCMS-1.x and WonderCMS-2.x.x
 
 # Update
+* 1.2.1 - 2017-04-28
+ - Changed/fixed span wrappers to div wrappers of editable areas
 * 1.2.0 - 2017-04-04
  - Edit to support for WonderCMS-2.x.x
 * 1.1.1 - 2017-03-04
