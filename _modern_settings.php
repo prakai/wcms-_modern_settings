@@ -5,6 +5,7 @@
  * Change default settings page to a new modern style.
  *
  * @author  Prakai Nadee <prakai@rmuti.ac.th>
+ * @version 1.2.1
  * @version 1.2.0
  * @version 1.1.0
  */
@@ -102,7 +103,7 @@ EOT;
 				$pagePanel .= '
 				<div>'.(($key == 'title') ? '
 					<label >Page title, description and keywords</label>' : '').'
-					<span data-target="pages" id="' . $key . '" class="setbox editText">' . (wCMS::get('pages',wCMS::$currentPage)->$key != '' ? wCMS::get('pages',wCMS::$currentPage)->$key : '') . '</span>
+					<div data-target="pages" id="' . $key . '" class="setbox editText">' . (wCMS::get('pages',wCMS::$currentPage)->$key != '' ? wCMS::get('pages',wCMS::$currentPage)->$key : '') . '</div>
 				</div>';
 		}
 		$pagePanel .= '
@@ -136,11 +137,11 @@ EOT;
 				<div class="text-left">
 					<div>
 						<label for="siteTitle">Website title</label>
-						<span id="siteTitle" data-target="config" class="setbox editText">'.$siteTitle.'</span>
+						<div id="siteTitle" data-target="config" class="setbox editText">'.$siteTitle.'</div>
 					</div>
 					<div class="marginTop20">
 						<label for="'.((version<'2.0.0')?'copyright':'footer').'">Web footer</label>
-						<span id="'.((version<'2.0.0')?'copyright':'footer').'" data-target="blocks" class="setbox editText">'.$copyright.'</span>
+						<div id="'.((version<'2.0.0')?'copyright':'footer').'" data-target="blocks" class="setbox editText">'.$copyright.'</div>
 					</div>
                     <div class="row">
                         <div class="col-md-6">
@@ -163,7 +164,7 @@ EOT;
                         <div class="col-md-6">
         					<div class="marginTop20">
         						<label for="menuItems" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Enter a new page name in a new line">Menu items</label>
-        						<span id="menuItems" data-target="config" class="setbox editText">
+        						<div id="menuItems" data-target="config" class="setbox editText">
 ';
 	if (version<'2.0.0') {
 		if (empty(wCMS::getConfig('menuItems')))
@@ -177,7 +178,7 @@ EOT;
 		$sitePanel = preg_replace('/(<br>)+$/', '', $sitePanel);
 	}
 	$sitePanel .= '
-        						</span>
+        						</div>
         					</div>
                         </div>
                     </div>
@@ -200,7 +201,7 @@ EOT;
         					</div>
         					<div class="marginTop20">
         						<label for="login" data-toggle="tooltip" data-placement="right" title="eg: your-domain.com/yourLoginURL">Login URL</label>
-        						<span id="login" data-target="config" class="setbox editText">'.$loginURL.'</span>
+        						<div id="login" data-target="config" class="setbox editText">'.$loginURL.'</div>
         					</div>
                         </div>
                         <div class="col-md-6">
